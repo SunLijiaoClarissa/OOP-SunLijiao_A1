@@ -1,12 +1,9 @@
 import java.util.ArrayList;
 
 public class AssignmentOne {
-
     public static void main(String[] args) {
         // Part 3 – Using classes and objects
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. John", "General Practitioner in Family Medicine", "dr.john@example.com", "Family Medicine");
-        
-
         Ophthalmologist oph1 = new Ophthalmologist(3, "Dr. Lisa", "Ophthalmologist specializing in retina", "dr.lisa@example.com", "Retina Specialist");
 
         // 创建预约
