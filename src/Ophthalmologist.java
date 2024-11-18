@@ -13,7 +13,7 @@ public class Ophthalmologist extends HealthProfessional {
         this.qualification = qualification;
     }
 
-    // 打印医生的详细信息
+    // 打印医生的详细信息，重写父类的 printDetails 方法
     @Override
     public void printDetails() {
         System.out.println("The health professional details are:");
