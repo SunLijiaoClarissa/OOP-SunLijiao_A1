@@ -1,9 +1,9 @@
 public class HealthProfessional {
     // 实例变量
-    private int id;            // 只能为数字
-    private String name;       // 医生的姓名
-    private String info;       // 其他与医生无关的基本信息（例如：科室、资格证书等）
-    private String contactEmail;  // 电子邮箱
+    private int id;            // 医生ID
+    private String name;       // 医生姓名
+    private String info;       // 医生其他信息（如科室、资格证书等）
+    private String contactEmail;  // 医生电子邮件
 
     // 默认构造函数
     public HealthProfessional() {
@@ -13,17 +13,16 @@ public class HealthProfessional {
         this.contactEmail = "";
     }
 
-    // 第二个构造函数，初始化所有实例变量
+    // 带参构造函数，初始化实例变量
     public HealthProfessional(int id, String name, String info, String contactEmail) {
         this.id = id;
         this.name = name;
         this.info = info;
-        setContactEmail(contactEmail);  // 使用 setter 方法进行验证
+        setContactEmail(contactEmail);  // 使用setter方法验证电子邮件
     }
 
-    // 设置电子邮件
+    // 设置电子邮件，并进行格式验证
     public void setContactEmail(String contactEmail) {
-        // 简单的电子邮件格式验证
         if (contactEmail != null && contactEmail.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             this.contactEmail = contactEmail;
         } else {
@@ -36,7 +35,7 @@ public class HealthProfessional {
         return contactEmail;
     }
 
-    // 打印所有实例变量
+    // 打印健康专业人员的详细信息
     public void printDetails() {
         System.out.println("Health Professional Details:");
         System.out.println("------------------------------");
@@ -47,7 +46,7 @@ public class HealthProfessional {
         System.out.println("------------------------------");
     }
 
-    // 覆盖 toString 方法
+    // toString 方法重写，便于打印健康专业人员的简洁信息
     @Override
     public String toString() {
         return "Health Professional [ID=" + id + ", Name=" + name + ", Info=" + info + ", Contact Email=" + contactEmail + "]";
