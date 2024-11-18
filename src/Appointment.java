@@ -1,9 +1,8 @@
 public class Appointment {
-    // 实例变量：患者信息、预约时间、医生对象
     private String patientName;  // 患者姓名
     private String patientMobile; // 患者手机
     private String timeSlot;     // 预约时间
-    private HealthProfessional doctor; // 预约的医生，类型为健康专业人员（父类）
+    private HealthProfessional doctor; // 预约的医生（父类）
 
     // 默认构造函数
     public Appointment() {
@@ -19,6 +18,16 @@ public class Appointment {
         this.patientMobile = patientMobile;
         this.timeSlot = timeSlot;
         this.doctor = doctor;  // 传入医生对象
+    }
+
+    // 打印预约的所有信息
+    public void printDetails() {
+        System.out.println("Appointment Details:");
+        System.out.println("Patient Name: " + patientName);
+        System.out.println("Patient Mobile: " + patientMobile);
+        System.out.println("Preferred Time Slot: " + timeSlot);
+        System.out.println("Doctor Details:");
+        doctor.printDetails();  // 调用医生对象的 printDetails() 方法
     }
 
     // Getter 和 Setter 方法（可选）
@@ -52,15 +61,5 @@ public class Appointment {
 
     public void setDoctor(HealthProfessional doctor) {
         this.doctor = doctor;
-    }
-
-    // 打印预约的所有信息
-    public void printDetails() {
-        System.out.println("Appointment Details:");
-        System.out.println("Patient Name: " + patientName);
-        System.out.println("Patient Mobile: " + patientMobile);
-        System.out.println("Preferred Time Slot: " + timeSlot);
-        System.out.println("Doctor Details:");
-        doctor.printDetails();  // 调用医生对象的 printDetails() 方法
     }
 }
