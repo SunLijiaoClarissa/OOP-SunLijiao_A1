@@ -43,7 +43,7 @@ public class AssignmentOne {
         // Part 5 – 使用集合管理预约
         System.out.println("// Part 5 - Collection of appointments");
 
-        ArrayList<Appointment> appointmentList = new ArrayList<>();  // 创建一个 ArrayList 来存储预约
+        ArrayList<Appointment> appointmentList = new ArrayList<>(); // 创建一个 ArrayList 来存储预约
 
         // 添加预约
         createAppointment(appointmentList, "Charlie", "1112223333", "09:00", gp2);
@@ -65,13 +65,35 @@ public class AssignmentOne {
 
     // 创建预约的方法
     public static void createAppointment(ArrayList<Appointment> appointmentList, String patientName, String patientMobile, String timeSlot, HealthProfessional doctor) {
-        if (patientName != null && !patientName.isEmpty() && patientMobile != null && !patientMobile.isEmpty() && timeSlot != null && !timeSlot.isEmpty() && doctor != null) {
-            Appointment newAppointment = new Appointment(patientName, patientMobile, timeSlot, doctor);
-            appointmentList.add(newAppointment);
-            System.out.println("Appointment created successfully for " + patientName + " at " + timeSlot);
-        } else {
-            System.out.println("Error: Missing required appointment information. Appointment not created.");
+        if (patientName == null || patientName.isEmpty()) {
+            System.out.println("Error: Patient name cannot be empty.");
+            return;
         }
+        if (patientMobile == null || !patientMobile.matches("\\d{10}")) {
+            System.out.println("Error: Invalid mobile number. Please enter a 10-digit number.");
+            return;
+        }
+        if (timeSlot == null || !timeSlot.matches("\\d{2}:\\d{2}")) {
+            System.out.println("Error: Invalid time slot. Please use the format HH:mm.");
+            return;
+        }
+        if (doctor == null) {
+            System.out.println("Error: Doctor cannot be null.");
+            return;
+        }
+
+        // 检查预约冲突
+        for (Appointment existing : appointmentList) {
+            if (existing.isConflictWith(new Appointment(patientName, patientMobile, timeSlot, doctor))) {
+                System.out.println("Error: Appointment conflict detected with another appointment.");
+                return;
+            }
+        }
+
+        // 创建并添加预约
+        Appointment newAppointment = new Appointment(patientName, patientMobile, timeSlot, doctor);
+        appointmentList.add(newAppointment);
+        System.out.println("Appointment created successfully for " + patientName + " at " + timeSlot);
     }
 
     // 打印现有预约的方法
@@ -81,7 +103,6 @@ public class AssignmentOne {
         } else {
             for (Appointment appointment : appointmentList) {
                 appointment.printDetails();
-                System.out.println("------------------------------");
             }
         }
     }
@@ -91,7 +112,7 @@ public class AssignmentOne {
         boolean found = false;
         for (Appointment appointment : appointmentList) {
             if (appointment.getPatientMobile().equals(patientMobile)) {
-                appointmentList.remove(appointment);
+                appointment.setStatus("Cancelled");
                 System.out.println("Appointment cancelled for patient with mobile: " + patientMobile);
                 found = true;
                 break;
