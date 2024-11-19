@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class AssignmentOne {
     public static void main(String[] args) {
         // Part 3 – Using classes and objects
-        System.out.println("// Part 3 – Using classes and objects");
+        System.out.println("// Part 3 - Using classes and objects");
 
         // 创建 3 个 General Practitioner 对象
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. John", "General Practitioner in Family Medicine", "dr.john@example.com", "Family Medicine");
@@ -28,7 +28,7 @@ public class AssignmentOne {
         System.out.println("------------------------------");
 
         // Part 3 – 创建预约
-        System.out.println("// Part 3 – Creating appointments");
+        System.out.println("// Part 3 - Creating appointments");
 
         Appointment appointment1 = new Appointment("Alice", "1234567890", "10:00", gp1);
         Appointment appointment2 = new Appointment("Bob", "9876543210", "14:30", oph1);
@@ -41,7 +41,7 @@ public class AssignmentOne {
         System.out.println("------------------------------");
 
         // Part 5 – 使用集合管理预约
-        System.out.println("// Part 5 – Collection of appointments");
+        System.out.println("// Part 5 - Collection of appointments");
 
         ArrayList<Appointment> appointmentList = new ArrayList<>();  // 创建一个 ArrayList 来存储预约
 
