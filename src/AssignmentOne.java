@@ -2,17 +2,31 @@ import java.util.ArrayList;
 
 public class AssignmentOne {
     public static void main(String[] args) {
+// Part 3 – Using classes and objects
         // Part 3 – Using classes and objects
         System.out.println("// Part 3 - Using classes and objects");
 
-        // 创建 2 个 General Practitioner 对象
+        // 创建 3 个 General Practitioner 对象
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. John", "General Practitioner in Family Medicine", "dr.john@example.com", "Family Medicine", 10);
         GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr. Emily", "General Practitioner in Pediatrics", "dr.emily@example.com", "Pediatrics", 8);
+        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr. Chris", "General Practitioner in Dermatology", "dr.chris@example.com", "Dermatology", 12);
 
         // 创建 2 个 Ophthalmologist 对象
-        Ophthalmologist oph1 = new Ophthalmologist(3, "Dr. Lisa", "Ophthalmologist specializing in retina", "dr.lisa@example.com", "Retina Specialist", "Downtown Clinic");
-        Ophthalmologist oph2 = new Ophthalmologist(4, "Dr. James", "Ophthalmologist specializing in cataracts", "dr.james@example.com", "Cataract Specialist", "Uptown Clinic");
+        Ophthalmologist oph1 = new Ophthalmologist(4, "Dr. Lisa", "Ophthalmologist specializing in retina", "dr.lisa@example.com", "Retina Specialist", "Downtown Clinic");
+        Ophthalmologist oph2 = new Ophthalmologist(5, "Dr. James", "Ophthalmologist specializing in cataracts", "dr.james@example.com", "Cataract Specialist", "Uptown Clinic");
 
+        // 打印所有健康专业人员的详细信息
+        gp1.printDetails();
+        System.out.println("------------------------------");
+        gp2.printDetails();
+        System.out.println("------------------------------");
+        gp3.printDetails();
+        System.out.println("------------------------------");
+        oph1.printDetails();
+        System.out.println("------------------------------");
+        oph2.printDetails();
+        System.out.println("------------------------------");
+        
         // Part 5 – 使用集合管理预约
         System.out.println("// Part 5 - Collection of appointments");
 
@@ -100,5 +114,3 @@ public class AssignmentOne {
         }
     }
 }
-
-
