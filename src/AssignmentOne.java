@@ -5,50 +5,26 @@ public class AssignmentOne {
         // Part 3 – Using classes and objects
         System.out.println("// Part 3 - Using classes and objects");
 
-        // 创建 3 个 General Practitioner 对象
+        // 创建 2 个 General Practitioner 对象
         GeneralPractitioner gp1 = new GeneralPractitioner(1, "Dr. John", "General Practitioner in Family Medicine", "dr.john@example.com", "Family Medicine", 10);
         GeneralPractitioner gp2 = new GeneralPractitioner(2, "Dr. Emily", "General Practitioner in Pediatrics", "dr.emily@example.com", "Pediatrics", 8);
-        GeneralPractitioner gp3 = new GeneralPractitioner(3, "Dr. Chris", "General Practitioner in Dermatology", "dr.chris@example.com", "Dermatology", 12);
 
         // 创建 2 个 Ophthalmologist 对象
-        Ophthalmologist oph1 = new Ophthalmologist(4, "Dr. Lisa", "Ophthalmologist specializing in retina", "dr.lisa@example.com", "Retina Specialist", "Downtown Clinic");
-        Ophthalmologist oph2 = new Ophthalmologist(5, "Dr. James", "Ophthalmologist specializing in cataracts", "dr.james@example.com", "Cataract Specialist", "Uptown Clinic");
-
-        // 打印所有健康专业人员的详细信息
-        System.out.println("------------------------------");
-        gp1.printDetails();
-        System.out.println("------------------------------");
-        gp2.printDetails();
-        System.out.println("------------------------------");
-        gp3.printDetails();
-        System.out.println("------------------------------");
-        oph1.printDetails();
-        System.out.println("------------------------------");
-        oph2.printDetails();
-        System.out.println("------------------------------");
-
-        // Part 3 – 创建预约
-        System.out.println("// Part 3 - Creating appointments");
-
-        Appointment appointment1 = new Appointment("Alice", "1234567890", "10:00", gp1);
-        Appointment appointment2 = new Appointment("Bob", "9876543210", "14:30", oph1);
-
-        // 打印预约详情
-        System.out.println("------------------------------");
-        appointment1.printDetails();
-        System.out.println("------------------------------");
-        appointment2.printDetails();
-        System.out.println("------------------------------");
+        Ophthalmologist oph1 = new Ophthalmologist(3, "Dr. Lisa", "Ophthalmologist specializing in retina", "dr.lisa@example.com", "Retina Specialist", "Downtown Clinic");
+        Ophthalmologist oph2 = new Ophthalmologist(4, "Dr. James", "Ophthalmologist specializing in cataracts", "dr.james@example.com", "Cataract Specialist", "Uptown Clinic");
 
         // Part 5 – 使用集合管理预约
         System.out.println("// Part 5 - Collection of appointments");
 
         ArrayList<Appointment> appointmentList = new ArrayList<>(); // 创建一个 ArrayList 来存储预约
 
-        // 添加预约
-        createAppointment(appointmentList, "Charlie", "1112223333", "09:00", gp2);
-        createAppointment(appointmentList, "David", "4445556666", "13:30", oph2);
-        createAppointment(appointmentList, "Eve", "7778889990", "11:00", gp3);
+        // 添加 2 个全科医生的预约
+        createAppointment(appointmentList, "Charlie", "1112223333", "09:00", gp1);
+        createAppointment(appointmentList, "David", "4445556666", "13:30", gp2);
+
+        // 添加 2 个眼科医生的预约
+        createAppointment(appointmentList, "Eve", "7778889990", "11:00", oph1);
+        createAppointment(appointmentList, "Frank", "9998887770", "15:00", oph2);
 
         // 打印现有预约
         System.out.println("Existing Appointments:");
@@ -56,7 +32,7 @@ public class AssignmentOne {
 
         // 取消预约
         System.out.println("// Canceling appointment for Charlie");
-        cancelBooking(appointmentList, "1112223333");
+        cancelBooking(appointmentList, "1112223333", "09:00");
 
         // 打印更新后的预约列表
         System.out.println("Updated Appointments:");
@@ -108,19 +84,21 @@ public class AssignmentOne {
     }
 
     // 取消预约的方法
-    public static void cancelBooking(ArrayList<Appointment> appointmentList, String patientMobile) {
+    public static void cancelBooking(ArrayList<Appointment> appointmentList, String patientMobile, String appointmentTime) {
         boolean found = false;
         for (Appointment appointment : appointmentList) {
-            if (appointment.getPatientMobile().equals(patientMobile)) {
+            // 使用患者手机号和预约时间来唯一确定预约
+            if (appointment.getPatientMobile().equals(patientMobile) && appointment.getTimeSlot().equals(appointmentTime)) {
                 appointment.setStatus("Cancelled");
-                System.out.println("Appointment cancelled for patient with mobile: " + patientMobile);
+                System.out.println("Appointment cancelled for patient with mobile: " + patientMobile + " at " + appointmentTime);
                 found = true;
                 break;
             }
         }
         if (!found) {
-            System.out.println("Error: No appointment found for patient with mobile: " + patientMobile);
+            System.out.println("Error: No appointment found for patient with mobile: " + patientMobile + " at " + appointmentTime);
         }
     }
 }
+
 
