@@ -1,27 +1,22 @@
 public class GeneralPractitioner extends HealthProfessional {
-    private String specialization;  // 专业领域（如内科、外科等）
+    private String specialization;  // 专业领域
+    private int yearsOfExperience;  // 从业年限
 
     // 默认构造函数
     public GeneralPractitioner() {
-        super();  // 调用父类的默认构造函数
+        super();
         this.specialization = "";
+        this.yearsOfExperience = 0;
     }
 
-    // 第二个构造函数，初始化所有实例变量
-    public GeneralPractitioner(int id, String name, String info, String contactEmail, String specialization) {
-        super(id, name, info, contactEmail);  // 调用父类的带参构造函数
+    // 带参构造函数
+    public GeneralPractitioner(int id, String name, String info, String contactEmail, String specialization, int yearsOfExperience) {
+        super(id, name, info, contactEmail);
         this.specialization = specialization;
+        this.yearsOfExperience = yearsOfExperience;
     }
 
-    // 打印医生的详细信息，重写父类的 printDetails 方法
-    @Override
-    public void printDetails() {
-        System.out.println("The health professional details are:");
-        super.printDetails();  // 打印父类（HealthProfessional）的信息
-        System.out.println("Specialization: " + specialization);  // 打印该医生的专业领域
-    }
-
-    // Getter 和 Setter 方法
+    // Getter 和 Setter
     public String getSpecialization() {
         return specialization;
     }
@@ -29,5 +24,33 @@ public class GeneralPractitioner extends HealthProfessional {
     public void setSpecialization(String specialization) {
         this.specialization = specialization;
     }
+
+    public int getYearsOfExperience() {
+        return yearsOfExperience;
+    }
+
+    public void setYearsOfExperience(int yearsOfExperience) {
+        if (yearsOfExperience >= 0) {
+            this.yearsOfExperience = yearsOfExperience;
+        } else {
+            System.out.println("Invalid years of experience.");
+        }
+    }
+
+    // 打印详细信息
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Specialization     : " + specialization);
+        System.out.println("Years of Experience: " + yearsOfExperience);
+        System.out.println("------------------------------");
+    }
+
+    // 更新专业领域的方法
+    public void updateSpecialization(String newSpecialization) {
+        this.specialization = newSpecialization;
+        System.out.println("Specialization updated to: " + newSpecialization);
+    }
 }
+
 
