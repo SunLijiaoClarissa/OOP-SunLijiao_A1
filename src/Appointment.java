@@ -1,20 +1,20 @@
 public class Appointment {
-    private String patientName;  // 患者姓名
-    private String patientMobile; // 患者手机
-    private String timeSlot;     // 预约时间
-    private HealthProfessional doctor; // 预约的医生（父类）
-    private String status;       // 预约状态（例如：Pending, Confirmed, Cancelled）
+    private String patientName;  // Patient name
+    private String patientMobile; // Patient mobile phone
+    private String timeSlot;     // Appointment time
+    private HealthProfessional doctor; // Doctor Appointments (Parent)
+    private String status;       // Appointment status (e.g：Pending, Confirmed, Cancelled）
 
-    // 默认构造函数
+    // Default constructor
     public Appointment() {
         this.patientName = "";
         this.patientMobile = "";
         this.timeSlot = "";
-        this.doctor = null;  // 默认为 null
-        this.status = "Pending"; // 默认状态为 Pending
+        this.doctor = null;  // By default null
+        this.status = "Pending"; // The default status is Pending
     }
 
-    // 第二个构造函数，初始化所有实例变量
+    // The second constructor initializes all instance variables
     public Appointment(String patientName, String patientMobile, String timeSlot, HealthProfessional doctor) {
         if (patientName == null || patientName.trim().isEmpty()) {
             throw new IllegalArgumentException("Patient name cannot be empty.");
@@ -33,10 +33,10 @@ public class Appointment {
         this.patientMobile = patientMobile;
         this.timeSlot = timeSlot;
         this.doctor = doctor;
-        this.status = "Pending"; // 默认状态为 Pending
+        this.status = "Pending"; // The default status is Pending
     }
 
-    // 打印预约的所有信息
+    //Print all the information for the appointment
     public void printDetails() {
         System.out.println("Appointment Details:");
         System.out.println("Patient Name       : " + patientName);
@@ -44,11 +44,11 @@ public class Appointment {
         System.out.println("Preferred Time Slot: " + timeSlot);
         System.out.println("Appointment Status : " + status);
         System.out.println("Doctor Details:");
-        doctor.printDetails();  // 调用医生对象的 printDetails() 方法
+        doctor.printDetails();  // Call the printDetails() method of the doctor object
         System.out.println("------------------------------");
     }
 
-    // Getter 和 Setter 方法
+    // Getter and Setter methods
     public String getPatientName() {
         return patientName;
     }
@@ -66,7 +66,7 @@ public class Appointment {
     }
 
     public void setPatientMobile(String patientMobile) {
-        if (patientMobile != null && patientMobile.matches("\\d{10}")) { // 手机号为10位数字
+        if (patientMobile != null && patientMobile.matches("\\d{10}")) { // The phone number is 10 digits
             this.patientMobile = patientMobile;
         } else {
             throw new IllegalArgumentException("Invalid mobile number. Please enter a 10-digit number.");
@@ -78,7 +78,7 @@ public class Appointment {
     }
 
     public void setTimeSlot(String timeSlot) {
-        if (timeSlot != null && timeSlot.matches("\\d{2}:\\d{2}")) { // 时间格式为 HH:mm
+        if (timeSlot != null && timeSlot.matches("\\d{2}:\\d{2}")) { // Time format is HH:mm
             this.timeSlot = timeSlot;
         } else {
             throw new IllegalArgumentException("Invalid time slot. Please use the format HH:mm.");
@@ -109,7 +109,7 @@ public class Appointment {
         }
     }
 
-    // 检查是否与另一个预约冲突
+    // Check for a conflict with another appointment
     public boolean isConflictWith(Appointment another) {
         return this.timeSlot.equals(another.timeSlot) && this.doctor.equals(another.doctor);
     }

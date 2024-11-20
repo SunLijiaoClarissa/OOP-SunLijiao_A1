@@ -1,22 +1,22 @@
 public class Ophthalmologist extends HealthProfessional {
-    private String qualification;   // 资格证书
-    private String clinicLocation;  // 诊所位置
+    private String qualification;   // Qualification certificate
+    private String clinicLocation;  // Clinic location
 
-    // 默认构造函数
+    // Default constructor
     public Ophthalmologist() {
         super();
         this.qualification = "";
         this.clinicLocation = "";
     }
 
-    // 带参构造函数
+    // Parameterized constructor
     public Ophthalmologist(int id, String name, String info, String contactEmail, String qualification, String clinicLocation) {
         super(id, name, info, contactEmail);
         this.qualification = qualification;
         this.clinicLocation = clinicLocation;
     }
 
-    // Getter 和 Setter
+    // Getter and Setter
     public String getQualification() {
         return qualification;
     }
@@ -33,12 +33,12 @@ public class Ophthalmologist extends HealthProfessional {
         this.clinicLocation = clinicLocation;
     }
 
-    // 判断是否在特定地点工作
+    // Determine whether to work in a particular location
     public boolean isWorkingAt(String location) {
         return clinicLocation.equals(location);
     }
 
-    // 打印详细信息
+    // Print details
     @Override
     public void printDetails() {
         super.printDetails();

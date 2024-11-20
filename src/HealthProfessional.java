@@ -1,11 +1,11 @@
 public class HealthProfessional {
-    // 实例变量
-    private int id;                  // 医生ID
-    private String name;             // 医生姓名
-    private String info;             // 医生其他信息
-    private String contactEmail;     // 医生电子邮件
+    // Instance variable
+    private int id;                  // Doctor ID
+    private String name;             // Doctor's name
+    private String info;             // Doctor Other Information
+    private String contactEmail;     // Doctor email
 
-    // 默认构造函数
+    // Default constructor
     public HealthProfessional() {
         this.id = 0;
         this.name = "";
@@ -13,15 +13,15 @@ public class HealthProfessional {
         this.contactEmail = "";
     }
 
-    // 带参构造函数
+    // Parameterized constructor
     public HealthProfessional(int id, String name, String info, String contactEmail) {
         this.id = id;
         this.name = name;
         this.info = info;
-        this.contactEmail = validateEmail(contactEmail); // 调用私有方法验证电子邮件
+        this.contactEmail = validateEmail(contactEmail); // Invoke a private method to validate the E-mail
     }
 
-    // 私有方法：验证并返回电子邮件
+    // Private method: Validate and return the email
     private String validateEmail(String contactEmail) {
         if (contactEmail != null && contactEmail.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             return contactEmail;
@@ -31,7 +31,7 @@ public class HealthProfessional {
         }
     }
 
-    // Getter 和 Setter 方法
+    // Getter and Setter methods
     public int getId() {
         return id;
     }
@@ -69,7 +69,7 @@ public class HealthProfessional {
         }
     }
 
-    // 打印健康专业人员的详细信息
+    // Print details of health professionals
     public void printDetails() {
         System.out.println("Health Professional Details:");
         System.out.println("------------------------------");
@@ -80,7 +80,7 @@ public class HealthProfessional {
         System.out.println("------------------------------");
     }
 
-    // toString 方法
+    // toString methods
     @Override
     public String toString() {
         return "HealthProfessional [ID=" + id + ", Name=" + name + ", Info=" + info + ", Contact Email=" + contactEmail + "]";

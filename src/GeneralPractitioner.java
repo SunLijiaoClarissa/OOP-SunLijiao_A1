@@ -1,22 +1,22 @@
 public class GeneralPractitioner extends HealthProfessional {
-    private String specialization;  // 专业领域
-    private int yearsOfExperience;  // 从业年限
+    private String specialization;  // Professional field
+    private int yearsOfExperience;  // Years of service
 
-    // 默认构造函数
+    // Default constructor
     public GeneralPractitioner() {
         super();
         this.specialization = "";
         this.yearsOfExperience = 0;
     }
 
-    // 带参构造函数
+    // Parameterized constructor
     public GeneralPractitioner(int id, String name, String info, String contactEmail, String specialization, int yearsOfExperience) {
         super(id, name, info, contactEmail);
         this.specialization = specialization;
         this.yearsOfExperience = yearsOfExperience;
     }
 
-    // Getter 和 Setter
+    // Getter and Setter
     public String getSpecialization() {
         return specialization;
     }
@@ -37,7 +37,7 @@ public class GeneralPractitioner extends HealthProfessional {
         }
     }
 
-    // 打印详细信息
+    // Print details
     @Override
     public void printDetails() {
         super.printDetails();
@@ -46,7 +46,7 @@ public class GeneralPractitioner extends HealthProfessional {
         System.out.println("------------------------------");
     }
 
-    // 更新专业领域的方法
+    // Methods for updating areas of expertise
     public void updateSpecialization(String newSpecialization) {
         this.specialization = newSpecialization;
         System.out.println("Specialization updated to: " + newSpecialization);
